@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pookie, Will You Be My Valentine? 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #fff0f5, #ffe4e9, #ffd6e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.bg-heart {
+    position: fixed;
+    font-size: 18px;
+    animation: floatUp linear infinite;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from { transform: translateY(110vh) scale(0.8); opacity: 0; }
+    to { transform: translateY(-10vh) scale(1); opacity: 0.4; }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(15px);
+    border-radius: 30px;
+    padding: 45px 35px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.25);
+    max-width: 520px;
+    width: 90%;
+    animation: glow 3s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 0 20px rgba(255, 182, 193, 0.4); }
+    to { box-shadow: 0 0 35px rgba(255, 182, 193, 0.6); }
+}
+
+h1 {
+    font-size: 2.3em;
+    margin-bottom: 10px;
+}
+
+.name {
+    color: #fff0f5;
+    text-shadow: 0 0 15px pink;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+}
+
+.question {
+    font-size: 1.9em;
+    margin: 25px 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.playful-message {
+    font-size: 1.2em;
+    min-height: 30px;
+    margin: 10px 0;
+    color: #ff4d6d;
+    font-weight: 600;
+    animation: bounce 0.5s ease;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 16px 38px;
+    border-radius: 50px;
+    border: none;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+}
+
+#yesBtn {
+    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+    color: white;
+    box-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
+}
+
+#yesBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255, 77, 109, 0.8);
+}
+
+#noBtn {
+    background: white;
+    color: #ff4d6d;
+    position: relative;
+}
+
+.particle {
+    position: fixed;
+    pointer-events: none;
+    animation: particleFade 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes particleFade {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0.3) rotate(360deg); opacity: 0; }
+}
+
+.success {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.5em;
+    animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.heart-pulse {
+    font-size: 3em;
+    margin-top: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.date-text {
+    font-size: 0.7em;
+    margin-top: 25px;
+    animation: slideIn 0.8s ease 0.5s both;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.music-indicator {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.music-indicator:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.music-indicator.playing {
+    animation: musicPulse 1s ease infinite;
+}
+
+@keyframes musicPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.sparkle {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    animation: sparkle linear forwards;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+@keyframes sparkle {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-120px); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="music-indicator" id="musicIndicator" title="Click to play music">🎵</div>
+
+<audio id="bgMusic" loop>
+    <source src="https://archive.org/download/ElizabethMitchellYouAreMySunshine/Elizabeth%20Mitchell%20-%20You%20Are%20My%20Sunshine.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card" id="card">
+    <h1>Hey <span class="name">Pookie</span> 😍</h1>
+    <div class="subtitle">
+        I smile every time I think of you!<br>
+        Life with you feels like the perfect dream! ✨
+    </div>
+
+    <div class="question">
+        Would you be my valentine?! 💕
+    </div>
+
+    <div class="playful-message" id="playfulMsg"></div>
+
+    <div class="buttons">
+        <button id="yesBtn">YES 💖</button>
+        <button id="noBtn">NO 🙃</button>
+    </div>
+
+    <div class="success" id="successMsg">
+        💕 I love you Peypey! 💕<br><br>
+        <div class="heart-pulse">💖</div>
+        <div class="date-text">Let's go Peypey! We have a date! 🎉</div>
+    </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const successMsg = document.getElementById("successMsg");
+const music = document.getElementById("bgMusic");
+const playfulMsg = document.getElementById("playfulMsg");
+const musicIndicator = document.getElementById("musicIndicator");
+
+const playfulMessages = [
+    "Pleeeeease don't do this to me! 🥺",
+    "Haha not an option! 😄",
+    "No, not a chance... you're still my valentine! 💕",
+    "My relationship, my rules and you ARE my valentine 😎",
+    "Come onnnnn Pookie! 🙈",
+    "You can run but you can't hide! 😘",
+    "I'm not giving up that easily! 💪",
+    "Nice try! But nope! 😂",
+    "Pookie please! You know you want to say yes! 💖",
+    "This button is broken, try the other one! 🔧"
+];
+
+let noAttempts = 0;
+let musicStarted = false;
+
+function startMusic() {
+    if (!musicStarted) {
+        music.play().then(() => {
+            musicStarted = true;
+            musicIndicator.classList.add("playing");
+            musicIndicator.title = "Music is playing ♫";
+        }).catch(() => {
+            musicIndicator.title = "Click to play music";
+        });
+    }
+}
+
+musicIndicator.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (music.paused) {
+        startMusic();
+    } else {
+        music.pause();
+        musicIndicator.classList.remove("playing");
+        musicIndicator.title = "Click to play music";
+        musicStarted = false;
+    }
+});
+
+document.body.addEventListener("click", startMusic);
+
+yesBtn.addEventListener("mouseenter", () => {
+    for (let i = 0; i < 8; i++) {
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        particle.innerHTML = "💕";
+        particle.style.fontSize = "14px";
+        
+        const rect = yesBtn.getBoundingClientRect();
+        particle.style.left = rect.left + rect.width / 2 + "px";
+        particle.style.top = rect.top + rect.height / 2 + "px";
+        
+        const angle = (i / 8) * Math.PI * 2;
+        const distance = 60;
+        particle.style.setProperty("--tx", Math.cos(angle) * distance + "px");
+        particle.style.setProperty("--ty", Math.sin(angle) * distance + "px");
+        
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 1200);
+    }
+});
+
+noBtn.addEventListener("mouseover", () => {
+    playfulMsg.textContent = playfulMessages[noAttempts % playfulMessages.length];
+    playfulMsg.style.animation = "none";
+    setTimeout(() => playfulMsg.style.animation = "bounce 0.5s ease", 10);
+    
+    const newScale = 1 + (noAttempts * 0.05);
+    yesBtn.style.transform = `scale(${Math.min(newScale, 1.3)})`;
+    yesBtn.style.animation = "shake 0.5s ease";
+    setTimeout(() => yesBtn.style.animation = "none", 500);
+    
+    const noScale = Math.max(0.7, 1 - (noAttempts * 0.04));
+    noAttempts++;
+    
+    const maxX = window.innerWidth - 120;
+    const maxY = window.innerHeight - 120;
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+    
+    noBtn.style.position = "fixed";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+    noBtn.style.transition = "all 0.3s ease";
+    noBtn.style.transform = `rotate(${Math.random() * 360}deg) scale(${noScale})`;
+    setTimeout(() => noBtn.style.transform = `scale(${noScale})`, 300);
+    
+    const rect = noBtn.getBoundingClientRect();
+    for (let i = 0; i < 3; i++) {
+        setTimeout(() => {
+            const puff = document.createElement("div");
+            puff.innerHTML = "💔";
+            puff.style.position = "fixed";
+            puff.style.left = (rect.left + rect.width / 2) + "px";
+            puff.style.top = (rect.top + rect.height / 2) + "px";
+            puff.style.fontSize = "20px";
+            puff.style.pointerEvents = "none";
+            puff.style.animation = "floatUp 1s ease-out forwards";
+            puff.style.opacity = "0.6";
+            document.body.appendChild(puff);
+            setTimeout(() => puff.remove(), 1000);
+        }, i * 50);
+    }
+});
+
+yesBtn.addEventListener("click", () => {
+    document.querySelector(".buttons").style.display = "none";
+    playfulMsg.style.display = "none";
+    successMsg.style.display = "block";
+    
+    music.play().catch(() => {});
+    
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => createHeart(), i * 100);
+    }
+    
+    for (let i = 0; i < 30; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement("div");
+            confetti.innerHTML = ["💕", "💖", "💗", "💓", "✨"][Math.floor(Math.random() * 5)];
+            confetti.style.position = "fixed";
+            confetti.style.left = "50%";
+            confetti.style.top = "50%";
+            confetti.style.fontSize = "24px";
+            confetti.style.pointerEvents = "none";
+            
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 100 + Math.random() * 200;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance - 100;
+            
+            confetti.style.setProperty("--tx", tx + "px");
+            confetti.style.setProperty("--ty", ty + "px");
+            confetti.classList.add("particle");
+            
+            document.body.appendChild(confetti);
+            setTimeout(() => confetti.remove(), 1500);
+        }, i * 30);
+    }
+});
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("bg-heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(() => {
+    createHeart();
+}, 1200);
+
+setInterval(() => {
+    const s = document.createElement("div");
+    s.classList.add("sparkle");
+    s.style.left = Math.random() * 100 + "vw";
+    s.style.top = Math.random() * 100 + "vh";
+    document.body.appendChild(s);
+    setTimeout(() => s.remove(), 1500);
+}, 800);
+</script>
+
+</body>
+</html>
