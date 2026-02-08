@@ -14,7 +14,7 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(135deg, #fff0f5, #ffe4e9, #ffd6e8);
+    background: linear-gradient(135deg, #fdf5f8, #fce8ee, #f9dde6);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,21 +35,21 @@ body {
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(20px);
     border-radius: 30px;
     padding: 45px 35px;
     text-align: center;
-    color: white;
-    box-shadow: 0 0 60px rgba(0, 0, 0, 0.25);
+    color: #5a3f47;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
     max-width: 520px;
     width: 90%;
     animation: glow 3s infinite alternate;
 }
 
 @keyframes glow {
-    from { box-shadow: 0 0 20px rgba(255, 182, 193, 0.4); }
-    to { box-shadow: 0 0 35px rgba(255, 182, 193, 0.6); }
+    from { box-shadow: 0 0 15px rgba(247, 191, 210, 0.3); }
+    to { box-shadow: 0 0 30px rgba(247, 191, 210, 0.5); }
 }
 
 h1 {
@@ -58,8 +58,8 @@ h1 {
 }
 
 .name {
-    color: #fff0f5;
-    text-shadow: 0 0 15px pink;
+    color: #d4a5b8;
+    text-shadow: 0 0 10px rgba(247, 191, 210, 0.4);
 }
 
 .subtitle {
@@ -70,17 +70,18 @@ h1 {
 .question {
     font-size: 1.9em;
     margin: 25px 0;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    color: #6b4e5a;
 }
 
 .playful-message {
     font-size: 1.2em;
     min-height: 30px;
     margin: 10px 0;
-    color: #ff4d6d;
+    color: #c97889;
     font-weight: 600;
     animation: bounce 0.5s ease;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 @keyframes bounce {
@@ -112,19 +113,19 @@ button {
 }
 
 #yesBtn {
-    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+    background: linear-gradient(135deg, #d89baa, #e6b8c5);
     color: white;
-    box-shadow: 0 0 20px rgba(255, 77, 109, 0.7);
+    box-shadow: 0 0 15px rgba(216, 155, 170, 0.5);
 }
 
 #yesBtn:hover {
     transform: scale(1.08);
-    box-shadow: 0 0 25px rgba(255, 77, 109, 0.8);
+    box-shadow: 0 0 20px rgba(216, 155, 170, 0.7);
 }
 
 #noBtn {
-    background: white;
-    color: #ff4d6d;
+    background: rgba(255, 255, 255, 0.8);
+    color: #c97889;
     position: relative;
 }
 
@@ -144,6 +145,7 @@ button {
     margin-top: 20px;
     font-size: 1.5em;
     animation: pop 0.6s ease;
+    color: #6b4e5a;
 }
 
 @keyframes pop {
@@ -200,12 +202,12 @@ button {
 
 .sparkle {
     position: fixed;
-    width: 5px;
-    height: 5px;
-    background: white;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
     animation: sparkle linear forwards;
-    opacity: 0.4;
+    opacity: 0.3;
     pointer-events: none;
 }
 
